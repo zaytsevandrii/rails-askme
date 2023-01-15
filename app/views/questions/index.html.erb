@@ -1,9 +1,19 @@
 <div class="container">
-    <h2 class='title-lg mb'>Questions</h2>
-
-    <% @questions.each do |question|%>
-        <p class='mb-sm'><%= link_to "Question #{question.id}","/questions/#{question.id}"%></p>
-    <% end %>
-
     <p class='mt'> <%= link_to 'Create new question', new_question_path, class:'button button-main' %></p>
+
+    <%= render 'form', question:@question %>
 </div>
+
+ <div class='container mt-sm'>
+        <h2 class='title-lg'>
+            <%= @questions.count%>
+            <%= inclination(@questions.count,'question','questions','questions')%>
+        </h2>
+    </div>
+
+   <% @questions.each do |question|%>
+     <div class='container mt-sm'>
+        <%= render question %>
+     </div>
+    <%end%>
+
