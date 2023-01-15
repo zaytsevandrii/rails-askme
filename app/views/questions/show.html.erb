@@ -1,11 +1,13 @@
-<h1>Hello this is show page</h1>
-<p><%= Time.now%></p>
-<%=@question.body%> <br>
-User id: <b><%= @question.user_id%></b>
+<div class="container">
+    <h1 class='title-lg mb'>Hello this is page <%= @question.id%></h1>
+    <p class='mb-sm'><%= Time.now%></p>
+    <%=@question.body%> <br>
+    User id: <b><%= @question.user_id%></b>
 
-<p><%= link_to 'Edit question', edit_question_path(@question) %> </p>
+    <div class='mt'><%= link_to  fa_icon('pencil'), edit_question_path(@question), title:'Edit' %> </div>
 
-<div>
-<%= button_to 'Delete question', question_path(@question), method: :delete%>
+    <div>
+    <%= button_to fa_icon('trash-o'), question_path(@question),class:'mt', method: :delete, title: 'Delete'%>
+    </div>
+    <p class='mt'><%= link_to 'Questions All', '/questions'%> </p>
 </div>
-<p><%= link_to 'Questions All', '/questions'%> </p>
