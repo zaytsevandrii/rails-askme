@@ -1,2 +1,18 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class='container'>
+    <h2 class='title'>Join and answer</h2>
+
+    <div class='mt'>
+        <%= form_with model: @user do |form| %>
+            <p><%= form.label :name, 'Your name' %></p>
+            <p><%= form.text_field :name, class: 'from-text-field' %></p>
+
+            <p class='mt'><%= form.label :nickname, 'Nickname' %></p>
+            <p><%= form.text_field :nickname, class: 'from-text-field' %></p>
+
+            <p class='mt'><%= form.label :email %></p>
+            <p><%= form.text_field :email, class: 'from-text-field' %></p>
+
+            <p class='mt-lg'><%= form.submit 'Register', class: 'button button-main' %></p>
+        <% end %>
+    </div>
+</div>
