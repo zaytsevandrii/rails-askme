@@ -4,10 +4,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    user_params = params.require(:user).permit(:name, :nickname, :email, :password)
+    user_params = params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation)
 
-    User.create(user_params)
+    @user = User.new(user_params)
 
-    redirect_to root_path, notice: 'User created successfully'
+    if @user.save 
+      redirect_to root_path, notice: 'User created successfully'
+    else
+      flash.now[:alert] = 'You filled incorrect form'
+      render :new
+    end
   end
 end
